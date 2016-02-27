@@ -7,7 +7,7 @@ public class Point {
   double x;
   double y;
 
-  Point(double xCoord, double yCoord) {
+  public Point(double xCoord, double yCoord) {
     this.x = xCoord;
     this.y = yCoord;
   }

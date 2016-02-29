@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactCreationTests {
+public class ContactCreationTests extends TestBase{
   FirefoxDriver wd;
 
   @BeforeMethod
@@ -22,10 +22,10 @@ public class ContactCreationTests {
 
   }
 
-  private void login(String name, String password) {
+  private void login(String username, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(name);
+    wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys(password);

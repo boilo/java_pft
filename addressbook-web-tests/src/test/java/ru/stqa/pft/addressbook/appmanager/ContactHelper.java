@@ -59,7 +59,7 @@ public class ContactHelper extends BaseHelper{
     initContactCreation();
     fillContactData(contactData, b);
     submitContactCreation();
-
+    returntoHomePage();
   }
 
   public boolean isThereAContact() {

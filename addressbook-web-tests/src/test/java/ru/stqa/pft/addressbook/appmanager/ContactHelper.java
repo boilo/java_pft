@@ -65,4 +65,8 @@ public class ContactHelper extends BaseHelper{
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
+
+  public void returntoHomePage() {
+    click(By.linkText("home"));
+  }
 }

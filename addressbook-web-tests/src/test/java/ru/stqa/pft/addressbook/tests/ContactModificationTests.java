@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
  */
 public class ContactModificationTests extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactModefication (){
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Ivan", "Ivanov", "Minsk", "01", "02", "03", "04", "test1"), true);
@@ -24,7 +23,7 @@ public class ContactModificationTests extends TestBase {
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Vladimir", "Sidorov", null, null, null, null, null, null);
     app.getContactHelper().fillContactData(contact, false);
     app.getContactHelper().submitContactModification();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 

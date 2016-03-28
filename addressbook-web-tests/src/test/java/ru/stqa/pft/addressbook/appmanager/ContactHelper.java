@@ -1,16 +1,15 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by User on 29.02.2016.
@@ -46,8 +45,8 @@ public class ContactHelper extends BaseHelper{
     click(By.linkText("add new"));
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id +  "']")).click();
   }
 
   public void deleteSelectedContact() {
@@ -60,11 +59,26 @@ public class ContactHelper extends BaseHelper{
   }
 
 
-  public void createContact(ContactData contactData, boolean b) {
+  public void create(ContactData contactData, boolean b) {
     initContactCreation();
     fillContactData(contactData, b);
     submitContactCreation();
     returntoHomePage();
+  }
+
+  public void modify(ContactData contact) {
+    selectContactById(contact.getId());
+    modify();
+    fillContactData(contact, false);
+    submitContactModification();
+    returntoHomePage();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteSelectedContact();
+    returntoHomePage();
+
   }
 
   public boolean isThereAContact() {
@@ -75,20 +89,20 @@ public class ContactHelper extends BaseHelper{
     click(By.linkText("home"));
   }
 
-  public List<ContactData> getContactList() {
-    List<ContactData> contacts = new ArrayList<>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
       String firstname = element.findElement(By.xpath("./td[3]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstname, lastname, null, null, null, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }
 
-  public void modifyContact() {
+  public void modify() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
+
 }

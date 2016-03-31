@@ -9,7 +9,25 @@ public class ContactData {
   private String mobilephone;
   private String workphone;
   private String faxphone;
+  public String emailone;
+  public String emailtwo;
+  public String emailthree;
   private String group;
+
+  public ContactData withEmailone(String emailone) {
+    this.emailone = emailone;
+    return this;
+  }
+
+  public ContactData withEmailtwo(String emailtwo) {
+    this.emailtwo = emailtwo;
+    return this;
+  }
+
+  public ContactData withEmailthree(String emailthree) {
+    this.emailthree = emailthree;
+    return this;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -68,6 +86,18 @@ public class ContactData {
     return lastname;
   }
 
+  public String getEmailone() {
+    return emailone;
+  }
+
+  public String getEmailtwo() {
+    return emailtwo;
+  }
+
+  public String getEmailthree() {
+    return emailthree;
+  }
+
   public String getAddress() {
     return address;
   }
@@ -122,5 +152,6 @@ public class ContactData {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
+
 
 }

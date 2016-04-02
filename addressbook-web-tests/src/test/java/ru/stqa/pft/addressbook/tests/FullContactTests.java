@@ -46,7 +46,7 @@ public class FullContactTests extends TestBase {
   }
 
   private static String cleaned(String contact) {
-    return contact.replaceAll("\\s", "").replaceAll("\\(www\\..*\\..*\\)*", "")
+    return contact.replaceAll("\\s", "").replaceAll("\\(www\\..*?\\..*?\\)", "")
             .replaceAll("[-()]", "").replaceAll("H:|M:|W:", "");
   }
 

@@ -140,4 +140,15 @@ public class ContactHelper extends BaseHelper{
   private void initContactModificationById(int id) {
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
+
+  public String InfoFromAboutForm(ContactData contact) {
+    initContactView(contact.getId());
+    String allText = wd.findElement(By.cssSelector("div[id='content']")).getText();
+    return allText;
+  }
+
+  private void initContactView(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+
+  }
 }

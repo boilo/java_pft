@@ -19,7 +19,7 @@ public class ContactPhoneTests extends TestBase {
               .withFirstname("Ivan").withLastname("Ivanov").withAddress("Moscow, Esenina 1/21")
               .withHomephone("+7 (111)").withMobilephone("22-22").withWorkphone("33 33 33")
               .withEmailone("ivan.ivanov@gmail.com").withEmailtwo("ivan1@mail.ru")
-              .withEmailthree("ivan_i@yandex.ru").withGroup("test1"), true);
+              .withEmailthree("ivan_i@yandex.ru").withGroup("[none]"), true);
     }
   }
 

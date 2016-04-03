@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,9 @@ public class FullContactTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.contact().all().size() == 0) {
+      File photo = new File("src/test/resources/zoid.png");
       app.contact().create(new ContactData()
-              .withFirstname("Ivan").withLastname("Ivanov").withAddress("Moscow, Esenina 1/21")
+              .withFirstname("Ivan").withLastname("Ivanov").withAddress("Moscow, Esenina 1/21").withPhoto(photo)
               .withHomephone("+7 (111)").withMobilephone("22-22").withWorkphone("33 33 33")
               .withEmailone("ivan.ivanov@gmail.com").withEmailtwo("ivan1@mail.ru")
               .withEmailthree("ivan_i@yandex.ru").withGroup("[none]"), true);
@@ -41,7 +43,7 @@ public class FullContactTests extends TestBase {
             contact.getMobilephone(), contact.getWorkphone(), contact.getEmailone(), contact.getEmailtwo(),
             contact.getEmailthree())
             .stream().filter((s)->! s.equals(""))
-            .map(FullContactTests::cleaned)
+            .map(FullContactTests::cleaned2)
             .collect(Collectors.joining(""));
   }
 
@@ -50,4 +52,7 @@ public class FullContactTests extends TestBase {
             .replaceAll("[-()]", "").replaceAll("H:|M:|W:", "");
   }
 
+  private static String cleaned2(String contact) {
+    return contact.replaceAll("\\s", "").replaceAll("[-()]", "");
+  }
 }

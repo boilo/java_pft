@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class ContactHelper extends BaseHelper{
   public void fillContactData(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
+    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHomephone());
     type(By.name("mobile"), contactData.getMobilephone());
@@ -106,10 +108,11 @@ public class ContactHelper extends BaseHelper{
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
       String firstname = element.findElement(By.xpath("./td[3]")).getText();
+      File photo = new File("src/test/resources/zoid.png");
       String address = element.findElement(By.xpath("./td[4]")).getText();
       String[] phones = element.findElement(By.xpath("./td[6]")).getText().split("\n");
       String[] emails = element.findElement(By.xpath("./td[5]")).getText().split("\n");
-      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname).withPhoto(photo)
               .withAddress(address).withHomephone(phones[0]).withMobilephone(phones[1]).withWorkphone(phones[2])
               .withEmailone(emails[0]).withEmailtwo(emails[1]).withEmailthree(emails[2]));
     }
@@ -124,6 +127,7 @@ public class ContactHelper extends BaseHelper{
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    File photo = new File("src/test/resources/zoid.png");
     String address = wd.findElement(By.name("address")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
@@ -132,7 +136,7 @@ public class ContactHelper extends BaseHelper{
     String emailtwo = wd.findElement(By.name("email2")).getAttribute("value");
     String emailthree = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withPhoto(photo)
             .withAddress(address).withHomephone(home).withMobilephone(mobile).withWorkphone(work)
             .withEmailone(emailone).withEmailtwo(emailtwo).withEmailthree(emailthree);
   }

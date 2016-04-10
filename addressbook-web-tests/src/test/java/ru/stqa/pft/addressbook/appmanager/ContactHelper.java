@@ -38,11 +38,13 @@ public class ContactHelper extends BaseHelper{
     type(By.name("email2"), contactData.getEmailtwo());
     type(By.name("email3"), contactData.getEmailthree());
 
+/*
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
+*/
   }
 
   public void initContactCreation() {

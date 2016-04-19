@@ -6,9 +6,9 @@
     <homephone>1110</homephone>
     <mobilephone>2220</mobilephone>
     <workphone>3330</workphone>
-    <emailone>email 0</emailone>
-    <emailtwo>email2 0</emailtwo>
-    <emailthree>email3 0</emailthree>
+    <emailone>email0</emailone>
+    <emailtwo>email20</emailtwo>
+    <emailthree>email30</emailthree>
   </contact>
   <contact>
     <firstname>firstname 1</firstname>
@@ -17,8 +17,8 @@
     <homephone>1111</homephone>
     <mobilephone>2221</mobilephone>
     <workphone>3331</workphone>
-    <emailone>email 1</emailone>
-    <emailtwo>email2 1</emailtwo>
-    <emailthree>email3 1</emailthree>
+    <emailone>email1</emailone>
+    <emailtwo>email21</emailtwo>
+    <emailthree>email31</emailthree>
   </contact>
 </list>

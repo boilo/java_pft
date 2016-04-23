@@ -1,7 +1,7 @@
 <list>
   <contact>
     <firstname>firstname 0</firstname>
-    <lastname>lasttname 0</lastname>
+    <lastname>lastname 0</lastname>
     <address>address 0</address>
     <homephone>1110</homephone>
     <mobilephone>2220</mobilephone>
@@ -12,7 +12,7 @@
   </contact>
   <contact>
     <firstname>firstname 1</firstname>
-    <lastname>lasttname 1</lastname>
+    <lastname>lastname 1</lastname>
     <address>address 1</address>
     <homephone>1111</homephone>
     <mobilephone>2221</mobilephone>

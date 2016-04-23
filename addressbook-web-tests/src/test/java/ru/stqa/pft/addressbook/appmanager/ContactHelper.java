@@ -74,8 +74,7 @@ public class ContactHelper extends BaseHelper{
   }
 
   public void modify(ContactData contact) {
-    selectContactById(contact.getId());
-    modify();
+    initContactModificationById(contact.getId());
     fillContactData(contact, false);
     submitContactModification();
     contactCache = null;

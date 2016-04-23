@@ -37,7 +37,7 @@ public class ContactCreationTests extends TestBase{
 
   @Test(dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     File photo = new File("src/test/resources/zoid.png");
     /*ContactData contact = new ContactData().withFirstname("Ivan").withLastname("Ivanov").withPhoto(photo)
             .withAddress("Moscow, Esenina 1/21").withHomephone("+7 (111)")
@@ -45,7 +45,7 @@ public class ContactCreationTests extends TestBase{
             .withEmailone("ivan.ivanov@gmail.com").withEmailtwo("ivan1@mail.ru")
             .withEmailthree("ivan_i@yandex.ru").withGroup("[none]");*/
     app.contact().create(contact, true);
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
 
     assertThat(after, equalTo(
